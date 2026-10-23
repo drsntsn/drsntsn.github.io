@@ -1,0 +1,21 @@
+# Bağımlılıklar
+node_modules/
+
+# Gizlilik ve Güvenlik (Kural 8 Zırhı)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+id_rsa*
+credentials.json
+*secret*
+*token*.json
+
+# Sistem ve Editör
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.log

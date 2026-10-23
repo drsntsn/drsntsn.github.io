@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dursun Tosun • Maden Yüksek Mühendisi • Full-Stack Developer • Veri Uzmanı</title>
+  <meta name="description" content="Dursun Tosun - Maden Yüksek Mühendisi, Full-Stack Developer ve Veri Uzmanı. Yüksek hassasiyetli jeodezik, madencilik, veri analitiği ve modern web/mobil yazılım sistemleri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-ana: #0b0f19;
+      --bg-yuzey: #111827;
+      --bg-kart: #1a2236;
+      --bg-kart-hover: #222d47;
+      --sinir-rengi: rgba(255, 255, 255, 0.08);
+      --sinir-vurgu: #38bdf8;
+      
+      --metin-ana: #f8fafc;
+      --metin-ikincil: #94a3b8;
+      --metin-soluk: #64748b;
+      
+      --maden-altin: #f59e0b;
+      --yazilim-mavi: #38bdf8;
+      --veri-zumrut: #10b981;
+      --mor-vurgu: #a855f7;
+      
+      --font-baslik: 'Outfit', sans-serif;
+      --font-govde: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    [data-tema="acik"] {
+      --bg-ana: #f8fafc;
+      --bg-yuzey: #f1f5f9;
+      --bg-kart: #ffffff;
+      --bg-kart-hover: #f8fafc;
+      --sinir-rengi: #e2e8f0;
+      --sinir-vurgu: #0284c7;
+      
+      --metin-ana: #0f172a;
+      --metin-ikincil: #475569;
+      --metin-soluk: #94a3b8;
+      
+      --maden-altin: #d97706;
+      --yazilim-mavi: #0284c7;
+      --veri-zumrut: #059669;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-govde);
+      background-color: var(--bg-ana);
+      color: var(--metin-ana);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+
+    [data-tema="acik"] body {
+      background-image: 
+        radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+    }
+
+    /* Üst Çubuk */
+    .ust-cubuk {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: var(--bg-yuzey);
+      border-bottom: 1px solid var(--sinir-rengi);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .marka {
+      font-family: var(--font-baslik);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .marka-rozet {
+      background: linear-gradient(135deg, var(--maden-altin), var(--yazilim-mavi));
+      color: #000;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .tema-butonu {
+      background: var(--bg-kart);
+      border: 1px solid var(--sinir-rengi);
+      color: var(--metin-ana);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .tema-butonu:hover {
+      border-color: var(--sinir-vurgu);
+    }
+
+    /* Ana Alan */
+    .kapsayici {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      flex: 1;
+    }
+
+    /* Kahraman (Hero) Bölümü */
+    .kahraman {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .unvan-etiketleri {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .etiket {
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .etiket-maden {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--maden-altin);
+    }
+
+    .etiket-yazilim {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--yazilim-mavi);
+    }
+
+    .etiket-veri {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--veri-zumrut);
+    }
+
+    .kahraman-baslik {
+      font-family: var(--font-baslik);
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .kahraman-aciklama {
+      font-size: 1.15rem;
+      color: var(--metin-ikincil);
+      max-width: 820px;
+      margin: 0 auto 1.75rem;
+    }
+
+    /* 4 Temel İlke Bandı */
+    .ilkeler-kutusu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .ilke-karti {
+      background: var(--bg-kart);
+      border: 1px solid var(--sinir-rengi);
+      padding: 1.25rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .ilke-baslik {
+      font-family: var(--font-baslik);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ilke-metin {
+      font-size: 0.85rem;
+      color: var(--metin-ikincil);
+    }
+
+    /* Uzmanlık Alanları Izgarası */
+    .bolum-baslik {
+      font-family: var(--font-baslik);
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .alanlar-izgara {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .alan-karti {
+      background: var(--bg-kart);
+      border: 1px solid var(--sinir-rengi);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alan-karti:hover {
+      background: var(--bg-kart-hover);
+      border-color: var(--sinir-vurgu);
+      transform: translateY(-2px);
+    }
+
+    .alan-ikonu {
+      font-size: 2rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .alan-baslik {
+      font-family: var(--font-baslik);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .alan-aciklama {
+      font-size: 0.9rem;
+      color: var(--metin-ikincil);
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .proje-listesi {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      border-top: 1px dashed var(--sinir-rengi);
+      padding-top: 0.85rem;
+    }
+
+    .proje-listesi li strong {
+      color: var(--yazilim-mavi);
+      font-family: var(--font-mono);
+    }
+
+    /* Minimalist Alt Bilgi */
+    .alt-bilgi {
+      border-top: 1px solid var(--sinir-rengi);
+      background-color: var(--bg-yuzey);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--metin-ikincil);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Üst Bar -->
+  <header class="ust-cubuk" id="ana-ust-cubuk">
+    <div class="marka">
+      <div class="marka-rozet">DT</div>
+      <span>Dursun Tosun</span>
+    </div>
+
+    <button type="button" class="tema-butonu" id="btn-tema-degis">
+      <span>Açık Mod</span>
+    </button>
+  </header>
+
+  <!-- Ana Kapsayıcı -->
+  <main class="kapsayici">
+
+    <!-- Kahraman Alanı -->
+    <section class="kahraman">
+      <div class="unvan-etiketleri">
+        <span class="etiket etiket-maden">⛏️ Maden Yüksek Mühendisi</span>
+        <span class="etiket etiket-yazilim">💻 Full-Stack Developer</span>
+        <span class="etiket etiket-veri">📊 Veri Uzmanı (Data Specialist)</span>
+      </div>
+
+      <h1 class="kahraman-baslik">Dursun Tosun</h1>
+      <p class="kahraman-aciklama">
+        Mühendislik temelli matematiksel modelleme disiplinini; çağdaş full-stack yazılım mimarileri, veri bilimi ve jeodezik hesaplama motorlarıyla birleştiren yüksek hassasiyetli dijital sistemler mimarı.
+      </p>
+    </section>
+
+    <!-- 4 Ana Temel İlke -->
+    <section>
+      <div class="ilkeler-kutusu">
+        <div class="ilke-karti">
+          <div class="ilke-baslik" style="color:var(--yazilim-mavi);">1. Sadelik</div>
+          <p class="ilke-metin">Sıfır gereksiz karmaşıklık, arı ve modüler kod blokları, yüksek bakım kolaylığı.</p>
+        </div>
+        <div class="ilke-karti">
+          <div class="ilke-baslik" style="color:var(--veri-zumrut);">2. Güvenlik</div>
+          <p class="ilke-metin">Sıfır sır sızıntısı disiplini, katı veri izolasyonu ve OWASP standartları.</p>
+        </div>
+        <div class="ilke-karti">
+          <div class="ilke-baslik" style="color:var(--mor-vurgu);">3. Modernlik</div>
+          <p class="ilke-metin">Güncel dil özellikleri, akıcı UX/UI tasarımı ve modern mimari kalıplar.</p>
+        </div>
+        <div class="ilke-karti">
+          <div class="ilke-baslik" style="color:var(--maden-altin);">4. Güçlü Yapı</div>
+          <p class="ilke-metin">Tip güvenliği, otomatik uçtan uca testler ve deterministik çalışma garantisi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mühendislik Odak Alanları -->
+    <section>
+      <h2 class="bolum-baslik">Mühendislik & Yazılım Yetkinlikleri</h2>
+
+      <div class="alanlar-izgara">
+        
+        <!-- Alan 1: Madencilik & Jeodezi -->
+        <article class="alan-karti">
+          <div class="alan-ikonu">⛏️</div>
+          <h3 class="alan-baslik">Maden Jeolojisi & Jeodezi</h3>
+          <p class="alan-aciklama">
+            Saha sondaj logları, stratigrafik katman modellemeleri, maden ruhsat alanı köşe koordinat poligon hesaplamaları (Shoelace Gauss) ve milimetre hassasiyetli WGS-84 Vincenty / UTM koordinat dönüşümleri.
+          </p>
+          <ul class="proje-listesi">
+            <li><strong>sondaj:</strong> Jeoteknik ve maden sondaj loglama motoru.</li>
+            <li><strong>geodesy_master:</strong> WGS-84 Vincenty, UTM ve NATO MGRS kütüphanesi.</li>
+            <li><strong>cokgen_alan_hesabi:</strong> Gauss Shoelace koordinat geometrisi.</li>
+          </ul>
+        </article>
+
+        <!-- Alan 2: Veri Uzmanlığı & Sayısal Hesaplama -->
+        <article class="alan-karti">
+          <div class="alan-ikonu">📊</div>
+          <h3 class="alan-baslik">Veri Uzmanlığı & Analitik</h3>
+          <p class="alan-aciklama">
+            Büyük veri boru hatları, ampirik kalibrasyon eğrileri üzerinden çift yönlü hassas lineer enterpolasyon, makine öğrenmesi regresyon modelleri ve kayan nokta sapmasız IEEE-754 istatistiksel analiz.
+          </p>
+          <ul class="proje-listesi">
+            <li><strong>toplama_js:</strong> Float-safe istatistiksel veri toplayıcı.</li>
+            <li><strong>EvFiyatTahmini:</strong> Makine öğrenmesi regresyon tahminleme modeli.</li>
+            <li><strong>2024_il_ilce_sql:</strong> Mülki idare coğrafi veri tabanı.</li>
+          </ul>
+        </article>
+
+        <!-- Alan 3: Endüstriyel Enerji & Proses -->
+        <article class="alan-karti">
+          <div class="alan-ikonu">⚡</div>
+          <h3 class="alan-baslik">Endüstriyel Enerji & Proses</h3>
+          <p class="alan-aciklama">
+            Köhler kombi akıllı elektrik sayaçları IEC 62056 OBIS telemetrisi, EPDK reaktif ceza ve kompanzasyon algoritmaları, 3-zamanlı tarife yük kaydırma tasarruf simülasyonları ve kimyasal çözelti yoğunluk cetvelleri.
+          </p>
+          <ul class="proje-listesi">
+            <li><strong>hmert:</strong> Köhler AEL.TF.19 kombi sayaç ve reaktif ceza motoru.</li>
+            <li><strong>bomecetveli:</strong> Baumé derecesi ve sülfat yoğunluk kalibratörü.</li>
+            <li><strong>Cozelti:</strong> Kimyasal derişim ve karışım hesaplayıcı.</li>
+          </ul>
+        </article>
+
+        <!-- Alan 4: Full-Stack Web & Mobil -->
+        <article class="alan-karti">
+          <div class="alan-ikonu">💻</div>
+          <h3 class="alan-baslik">Full-Stack Web & Mobil SaaS</h3>
+          <p class="alan-aciklama">
+            Node.js, Python, Flutter ve sıfır bağımlılıklı modern Vanilla JS/CSS ile mimarilenmiş; yüksek performanslı ticari sipariş sistemleri, yönetim panelleri ve reaktif mobil uygulamalar.
+          </p>
+          <ul class="proje-listesi">
+            <li><strong>qr_menu_web:</strong> Restoran ve işletme yönetim paneli.</li>
+            <li><strong>qr_menu_flutter:</strong> Çift platformlu iOS/Android masaya servis istemcisi.</li>
+            <li><strong>css_only_floating_label:</strong> Saf CSS erişilebilir form mimarisi.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- KULLANICININ İSTEDİĞİ MİNİMALİST ALT BİLGİ -->
+  <footer class="alt-bilgi" id="ana-alt-bilgi">
+    <p>© 2026 Dursun Tosun</p>
+  </footer>
+
+  <script>
+    const btnTema = document.getElementById('btn-tema-degis');
+    let aktifTema = localStorage.getItem('drsntsn_tema') || 'koyu';
+
+    function temaUygula(tema) {
+      if (tema === 'acik') {
+        document.documentElement.setAttribute('data-tema', 'acik');
+        btnTema.textContent = 'Koyu Mod';
+      } else {
+        document.documentElement.removeAttribute('data-tema');
+        btnTema.textContent = 'Açık Mod';
+      }
+      localStorage.setItem('drsntsn_tema', tema);
+    }
+
+    btnTema?.addEventListener('click', () => {
+      aktifTema = aktifTema === 'koyu' ? 'acik' : 'koyu';
+      temaUygula(aktifTema);
+    });
+
+    temaUygula(aktifTema);
+  </script>
+</body>
+</html>
